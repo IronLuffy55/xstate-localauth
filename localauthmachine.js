@@ -81,36 +81,3 @@ export const resumeMachine = Machine({
     }
   }
 });
-
-export const counselorMachine = Machine({
-  id: "counselor",
-  initial: "idle",
-
-  states: {
-    idle: {
-      on: {
-        CHECK: [
-          { target: "authed", cond: "hasCredentials" },
-          { target: "notAuthed" }
-        ]
-      }
-    },
-    authed: {
-      invoke: {
-        src: "getUser",
-        onDone: {
-          target: "ready"
-        },
-        onError: {
-          target: "unknown"
-        }
-      }
-    },
-    ready: {
-      type: "final"
-    },
-    notAuthed: {
-      type: "final"
-    }
-  }
-});
