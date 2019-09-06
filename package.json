@@ -1,0 +1,29 @@
+{
+  "name": "rnlocalauth2",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@xstate/react": "^0.7.1",
+    "react": "16.8.3",
+    "react-native": "^0.59.0",
+    "react-native-hooks": "^0.9.0",
+    "react-native-local-auth": "^1.6.0",
+    "react-native-passcode-status": "^1.1.2",
+    "xstate": "^4.6.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.8.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
