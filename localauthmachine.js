@@ -69,7 +69,8 @@ export const resumeMachine = Machine({
     active: {
       on: {
         BACKGROUND: "background",
-        INACTIVE: "background"
+        INACTIVE: "background",
+        PENDING: "pending"
       }
     },
     pending: {
@@ -77,6 +78,39 @@ export const resumeMachine = Machine({
     },
     background: {
       on: { ACTIVE: "pending" }
+    }
+  }
+});
+
+export const counselorMachine = Machine({
+  id: "counselor",
+  initial: "idle",
+
+  states: {
+    idle: {
+      on: {
+        CHECK: [
+          { target: "authed", cond: "hasCredentials" },
+          { target: "notAuthed" }
+        ]
+      }
+    },
+    authed: {
+      invoke: {
+        src: "getUser",
+        onDone: {
+          target: "ready"
+        },
+        onError: {
+          target: "unknown"
+        }
+      }
+    },
+    ready: {
+      type: "final"
+    },
+    notAuthed: {
+      type: "final"
     }
   }
 });
